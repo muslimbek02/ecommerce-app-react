@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { PropTypes } from "prop-types";
 import {
   Box,
   List,
@@ -9,13 +11,26 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const SuggestsList = () => {
+const SuggestsList = ({ setIsVisible }) => {
+  
+  const handleClick = () => {
+    setIsVisible(false);
+    console.log("clicked body");
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleClick);
+
+    return () => document.body.removeEventListener("click", handleClick);
+
+  }, []);
+
   return (
     <Box
       sx={{
         width: "100%",
         position: "absolute",
-        top: "50px",
+        top: 50,
         left: 0,
         right: 0,
         zIndex: 1000,
@@ -23,6 +38,7 @@ const SuggestsList = () => {
         boxShadow: "0 4px 4px rgba(0,0,0,0.25)",
         backgroundColor: "#fff",
       }}
+      onClick={(evt) => evt.stopPropagation()}
     >
       <nav aria-label="main mailbox folders">
         <List>
@@ -51,4 +67,7 @@ const SuggestsList = () => {
   );
 };
 
+SuggestsList.propTypes = {
+  setIsVisible: PropTypes.func,
+};
 export default SuggestsList;

@@ -1,6 +1,6 @@
 import { Button, styled } from "@mui/material";
 
-const Btn = styled(Button)(() => ({
+export const Btn = styled(Button)(() => ({
   color: "#000",
   padding: "8px 20px",
   textTransform: "capitalize",
@@ -15,4 +15,3 @@ const Btn = styled(Button)(() => ({
   // },
 }));
 
-export default Btn;

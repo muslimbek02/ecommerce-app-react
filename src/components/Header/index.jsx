@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Stack, Typography, Box, Badge, Menu, MenuItem } from "@mui/material";
@@ -5,13 +6,23 @@ import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ClearIcon from "@mui/icons-material/Clear";
 
+import { setIsOpenCatalog } from "../../redux/slices/categorySlice";
+import { NavButton } from "../NavButton";
+import { Btn } from "../Button";
 import SearchBar from "../SearchBar";
-import Btn from "../Button";
-import NavButton from "../NavButton";
+import BottomHeader from "../BottomHeader";
+import CatalogDropdown from "../CatalogDropdown";
 
 const Header = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null); //  --------- Mui state
+  const [isVisible, setIsVisible] = useState(false);
+  const {isOpenCatalog} = useSelector(state => state.category);
+
+  const dispatch = useDispatch();
+
+  //   ------- mui start -----
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -19,6 +30,15 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  //  -------- mui end -------
+
+  const openCatalog = (evt) => {
+    dispatch(setIsOpenCatalog(!isOpenCatalog));
+    setIsVisible(false);
+    evt.stopPropagation();
+  };
+
+  const SearchBarProps = { isVisible, setIsVisible };
 
   return (
     <header className="header">
@@ -37,16 +57,21 @@ const Header = () => {
             <Btn
               variant="contained"
               startIcon={
-                <WidgetsOutlinedIcon sx={{ fontSize: "25px!important" }} />
+                !isOpenCatalog ? (
+                  <WidgetsOutlinedIcon sx={{ fontSize: "25px!important" }} />
+                ) : (
+                  <ClearIcon sx={{ fontSize: "25px!important" }} />
+                )
               }
               sx={{ ml: "30px" }}
+              onClick={openCatalog}
             >
               Katalog
             </Btn>
           </Box>
 
-          <SearchBar />
-          
+          <SearchBar {...SearchBarProps} />
+
           <Stack direction={"row"} alignItems="center">
             <NavButton>
               <AccountCircleIcon />
@@ -73,7 +98,7 @@ const Header = () => {
                 onClick={handleClick}
               >
                 <img
-                  src="./images/flag-uz.jpg"
+                  src="/images/flag-uz.jpg"
                   alt="flag-uz"
                   className="flag-img"
                 />
@@ -110,6 +135,8 @@ const Header = () => {
           </Stack>
         </Stack>
       </div>
+      <BottomHeader />
+      {isOpenCatalog && <CatalogDropdown />}
     </header>
   );
 };

@@ -1,6 +1,6 @@
 import { styled, Button } from "@mui/material";
 
-const NavButton = styled(Button)(() => ({
+export const NavButton = styled(Button)(() => ({
   textTransform: "capitalize",
   display: "flex",
   flexDirection: "column",
@@ -10,4 +10,3 @@ const NavButton = styled(Button)(() => ({
     background: "none",
   },
 }));
-export default NavButton;

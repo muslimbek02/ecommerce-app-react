@@ -1,21 +1,21 @@
 const plugins = [
   [
-    'babel-plugin-import',
+    "babel-plugin-import",
     {
-      libraryName: '@mui/material',
-      libraryDirectory: '',
+      libraryName: "@mui/material",
+      libraryDirectory: "",
       camel2DashComponentName: false,
     },
-    'core',
+    "core",
   ],
   [
-    'babel-plugin-import',
+    "babel-plugin-import",
     {
-      libraryName: '@mui/icons-material',
-      libraryDirectory: '',
+      libraryName: "@mui/icons-material",
+      libraryDirectory: "",
       camel2DashComponentName: false,
     },
-    'icons',
+    "icons",
   ],
 ];
 
