@@ -1,8 +1,13 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "@mui/material";
 import PropTypes from "prop-types";
+import {setIsOpenCatalog} from "../../redux/slices/categorySlice"
+import { createSlug } from "../../helpers/createSlug";
 
 const CategoryItems = ({ item }) => {
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.querySelector('#category-items').scrollTo({top: 0, behavior: 'smooth'})
@@ -10,11 +15,12 @@ const CategoryItems = ({ item }) => {
 
   return (
     <div>
-      {item.children.map(({ id, title }) => (
-        <div key={id}>
+      {item.children.map(category => (
+        <div key={category.id}>
           <Link
             underline="none"
-            href={title.replaceAll(" ", "-") + "-" + id}
+            onClick={() => dispatch(setIsOpenCatalog(false))}
+            href={createSlug(category)}
             sx={{
               fontSize: 14,
               display: "inline-block",
@@ -28,7 +34,7 @@ const CategoryItems = ({ item }) => {
               },
             }}
           >
-            {title}
+            {category.title}
           </Link>
         </div>
       ))}

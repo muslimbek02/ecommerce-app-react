@@ -8,9 +8,7 @@ const categorySlice = createSlice({
   initialState,
   reducers: {
     setCategoryItem: (state, action) => {
-      const selectedCategory = state.categories.find(
-        (item) => item.id === action.payload
-      );
+      const selectedCategory = state.categories.find(item => item.id === action.payload);
       state.categoryItem = selectedCategory;
     },
     setIsOpenCatalog: (state, action) => {

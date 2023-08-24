@@ -4,12 +4,12 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ClearIcon from "@mui/icons-material/Clear";
 import CategoryItems from "../CategoryItems";
 import { setIsOpenCatalog } from "../../redux/slices/categorySlice";
+import { createSlug } from "../../helpers/createSlug";
 
 const CategoryTitles = () => {
   
-  const categoryItem = useSelector(({ category }) => category.categoryItem);
+  const {categoryItem} = useSelector(state => state.category);
   const dispatch = useDispatch()
-
 
   return (
     <Grid item xs={9} sx={{ px: 2, py: 4 }}>
@@ -23,7 +23,7 @@ const CategoryTitles = () => {
       >
         <Link
           underline="none"
-          href={categoryItem.title.replaceAll(" ", "-") + "-" + categoryItem.id}
+          href={createSlug(categoryItem)}
           sx={{
             display: "inline-flex",
             alignItems: "center",
@@ -31,6 +31,7 @@ const CategoryTitles = () => {
             fontSize: 20,
             fontWeight: 600,
           }}
+          onClick={() => dispatch(setIsOpenCatalog(false))}
         >
           {categoryItem.title}
           <ChevronRightIcon />
@@ -50,7 +51,7 @@ const CategoryTitles = () => {
         {categoryItem.children.map(item => (
           <Grid item key={item.id} xs={4} className="category-item">
             <Link
-              href={item.title.replaceAll(" ", "-") + "-" + item.id}
+              href={createSlug(item)}
               underline="none"
               sx={{
                 display: "inline-block",
@@ -59,6 +60,7 @@ const CategoryTitles = () => {
                 fontWeight: 600,
                 mb: "18px",
               }}
+              onClick={() => dispatch(setIsOpenCatalog(false))}
             >
               {item.title}
             </Link>
