@@ -28,7 +28,6 @@ $activeColor: #fef3cc;
 
 html {
   scroll-behavior: smooth;
-  user-select: none;
 }
 
 a {
@@ -42,6 +41,37 @@ ol {
 button {
   text-transform: capitalize !important;
 }
+
+.css-12drbht-MuiTypography-root-MuiLink-root.breadcrumb-link, .breadcrumb-link {
+  padding: 5px 20px;
+  color: #333;
+  font-size: 14px;
+  margin-right: 4px;
+  position: relative;
+  white-space: nowrap;
+  text-decoration: none;
+  font-weight: 500;
+  z-index: 1;
+  border-radius: 4px;
+  user-select: none;
+  &::after {
+    content: '';
+    text-align: center;
+    background-color: #ececec;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transform: skewX(-10deg);
+    border-radius: 4px;
+  }
+}
+.disabled-breadcrumb-link::after {
+  background-color: rgba(251,193,0, .3);
+}
+
 .container {
   margin: 0 auto;
   max-width: 1240px;
