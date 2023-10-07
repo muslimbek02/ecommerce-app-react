@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import {setIsOpenCatalog} from "../../redux/slices/categorySlice"
 import { createSlug } from "../../helpers/createSlug";
 
-const CategoryItems = ({ item }) => {
+const CategoryChildren = ({ item }) => {
 
   const dispatch = useDispatch();
 
@@ -42,8 +42,8 @@ const CategoryItems = ({ item }) => {
   );
 };
 
-CategoryItems.propTypes = {
+CategoryChildren.propTypes = {
   item: PropTypes.object,
 };
 
-export default CategoryItems;
+export default CategoryChildren;

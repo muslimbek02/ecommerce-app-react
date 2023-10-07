@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Grid, Link, Box } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ClearIcon from "@mui/icons-material/Clear";
-import CategoryItems from "../CategoryItems";
+import CategoryChildren from "../CategoryChilren";
 import { setIsOpenCatalog } from "../../redux/slices/categorySlice";
 import { createSlug } from "../../helpers/createSlug";
 
@@ -31,7 +31,6 @@ const CategoryTitles = () => {
             fontSize: 20,
             fontWeight: 600,
           }}
-          onClick={() => dispatch(setIsOpenCatalog(false))}
         >
           {categoryItem.title}
           <ChevronRightIcon />
@@ -64,7 +63,7 @@ const CategoryTitles = () => {
             >
               {item.title}
             </Link>
-            <CategoryItems item={item} />
+            <CategoryChildren item={item} />
           </Grid>
         ))}
       </Grid>

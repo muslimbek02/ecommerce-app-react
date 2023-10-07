@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Breadcrumb from "../../components/Breadcrumb";
+import CategoryContent from "../../components/CategoryContent";
 import CategoryHeader from "../../components/CategoryHeader";
 import { getCategoryId } from "../../helpers/getCategoryId";
 import { searchCategoryById } from "../../helpers/searchCategoryById";
@@ -19,6 +20,7 @@ const CategoryPage = () => {
         <div className="container">
           <Breadcrumb pathList={category.path} />
           <CategoryHeader />
+          <CategoryContent />
         </div>
       </div>
     </main>

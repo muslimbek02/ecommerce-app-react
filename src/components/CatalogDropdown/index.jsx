@@ -18,7 +18,6 @@ const CatalogDropdown = () => {
   const dispatch = useDispatch();
 
   const bodyClick = () => {
-    console.log("bodyClick");
     dispatch(setIsOpenCatalog(false))
   };
 
