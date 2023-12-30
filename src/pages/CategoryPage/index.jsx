@@ -7,13 +7,13 @@ import { getCategoryId } from "../../helpers/getCategoryId";
 import { searchCategoryById } from "../../helpers/searchCategoryById";
 
 const CategoryPage = () => {
-  const { categories } = useSelector(state => state.category);
+  const { categories } = useSelector((state) => state.category);
 
   const { slug } = useParams();
   const id = getCategoryId(slug);
 
   const category = searchCategoryById(id, categories);
-  console.log(category);
+
   return (
     <main>
       <div className="category-page">

@@ -8,17 +8,25 @@ import {
   ListItemText,
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import CategoryTitles from "../CategoryTitles";
-import { setCategoryItem, setIsOpenCatalog } from "../../redux/slices/categorySlice";
+
+import CategoryItems from "../CategoryItems";
+import {
+  setCategoryItem,
+  setIsOpenCatalog,
+} from "../../redux/slices/categorySlice";
 
 const CatalogDropdown = () => {
+  const { categoryItem } = useSelector((state) => state.category);
+  const { categories } = useSelector((state) => state.category);
 
-  const {categoryItem} = useSelector(state => state.category);
-  const {categories} = useSelector(state => state.category);
   const dispatch = useDispatch();
 
   const bodyClick = () => {
-    dispatch(setIsOpenCatalog(false))
+    dispatch(setIsOpenCatalog(false));
+  };
+
+  const mouseOverHandler = (categoryId) => {
+    dispatch(setCategoryItem(categoryId));
   };
 
   useEffect(() => {
@@ -45,7 +53,7 @@ const CatalogDropdown = () => {
                       category.id === categoryItem.id && "#fef3cc",
                     "&:hover": { backgroundColor: "#fef3cc" },
                   }}
-                  onClick={() => dispatch(setCategoryItem(category.id))}
+                  onMouseOver={() => mouseOverHandler(category.id)}
                 >
                   <img
                     src={category.iconLink}
@@ -62,7 +70,7 @@ const CatalogDropdown = () => {
               ))}
             </MenuList>
           </Grid>
-          <CategoryTitles />
+          <CategoryItems />
         </Grid>
       </div>
     </div>

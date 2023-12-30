@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
 import { PropTypes } from "prop-types";
 
-const CategoryAsideTitle = ({ children }) => {
+const CategoryAsideTitle = ({ children, ...others }) => {
   return (
-    <Typography variant="subtitle1" fontWeight={600}>
+    <Typography variant="subtitle1" fontWeight={600} mt={3} {...others}>
       {children}
     </Typography>
   );

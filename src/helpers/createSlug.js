@@ -2,4 +2,4 @@
 //   id ------ category.id
 
 export const createSlug = ({ title, id }) =>
-  "category/" + title.replaceAll(" ", "-") + "-" + id;
+  "/category/" + title.replaceAll(" ", "-") + "-" + id;

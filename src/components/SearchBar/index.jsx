@@ -5,15 +5,18 @@ import { useDispatch } from "react-redux";
 import SuggestsList from "../SuggestsList";
 import { setIsOpenCatalog } from "../../redux/slices/categorySlice";
 
-const SearchBar = ({isVisible, setIsVisible }) => {
-  
-  const dispatch = useDispatch()
+const SearchBar = ({ isVisible, setIsVisible }) => {
+  const dispatch = useDispatch();
 
   const handleFocus = () => {
     setIsVisible(true);
-    dispatch(setIsOpenCatalog(false))
+    dispatch(setIsOpenCatalog(false));
   };
-  
+
+  const handleBlur = () => {
+    setIsVisible(false);
+  };
+
   return (
     <Box className="searchbar" sx={{ position: "relative" }}>
       <Paper
@@ -28,6 +31,7 @@ const SearchBar = ({isVisible, setIsVisible }) => {
         <InputBase
           onFocus={handleFocus}
           onClick={(evt) => evt.stopPropagation()}
+          onBlur={handleBlur}
           sx={{ ml: 1, flex: 1 }}
           placeholder="Mahsulotlar va turkumlar izlash"
           inputProps={{ "aria-label": "Mahsulotlar va turkumlar izlash" }}
@@ -43,7 +47,7 @@ const SearchBar = ({isVisible, setIsVisible }) => {
 
 SearchBar.propTypes = {
   isVisible: PropTypes.bool,
-  setIsVisible: PropTypes.func
+  setIsVisible: PropTypes.func,
 };
 
 export default SearchBar;

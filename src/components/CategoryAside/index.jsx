@@ -1,6 +1,7 @@
 import { Box} from "@mui/material";
 import CategoryAsideMenu from "../CategoryAsideMenu";
-import CategoryFilterPrice from "../CategoryFilterPrice";
+import CategoryFilterByBrends from "../CategoryFilterByBrends";
+import CategoryFilterByPrice from "../CategoryFilterByPrice";
 
 
 const CategoryAside = () => {
@@ -10,7 +11,8 @@ const CategoryAside = () => {
   return (
     <Box>
       <CategoryAsideMenu />
-      <CategoryFilterPrice/>
+      <CategoryFilterByPrice/>
+      <CategoryFilterByBrends />
     </Box>
   );
 };

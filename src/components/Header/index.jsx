@@ -18,7 +18,7 @@ import CatalogDropdown from "../CatalogDropdown";
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState(null); //  --------- Mui state
   const [isVisible, setIsVisible] = useState(false);
-  const {isOpenCatalog} = useSelector(state => state.category);
+  const { isOpenCatalog } = useSelector((state) => state.category);
 
   const dispatch = useDispatch();
 
@@ -34,7 +34,6 @@ const Header = () => {
 
   const openCatalog = (evt) => {
     dispatch(setIsOpenCatalog(!isOpenCatalog));
-    setIsVisible(false);
     evt.stopPropagation();
   };
 

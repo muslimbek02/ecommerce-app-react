@@ -1,4 +1,3 @@
-
 export const searchCategoryById = (id, categories) => {
   for (const category of categories) {
     if (category.id === id) {

@@ -6,10 +6,9 @@ import CategoryChildren from "../CategoryChilren";
 import { setIsOpenCatalog } from "../../redux/slices/categorySlice";
 import { createSlug } from "../../helpers/createSlug";
 
-const CategoryTitles = () => {
-  
-  const {categoryItem} = useSelector(state => state.category);
-  const dispatch = useDispatch()
+const CategoryItems = () => {
+  const { categoryItem } = useSelector((state) => state.category);
+  const dispatch = useDispatch();
 
   return (
     <Grid item xs={9} sx={{ px: 2, py: 4 }}>
@@ -24,6 +23,7 @@ const CategoryTitles = () => {
         <Link
           underline="none"
           href={createSlug(categoryItem)}
+          onClick={() => dispatch(setIsOpenCatalog(false))}
           sx={{
             display: "inline-flex",
             alignItems: "center",
@@ -47,10 +47,11 @@ const CategoryTitles = () => {
         sx={{ height: "calc(70vh - 55px)", overflowY: "auto" }}
         id="category-items"
       >
-        {categoryItem.children.map(item => (
+        {categoryItem.children.map((item) => (
           <Grid item key={item.id} xs={4} className="category-item">
             <Link
               href={createSlug(item)}
+              onClick={() => dispatch(setIsOpenCatalog(false))}
               underline="none"
               sx={{
                 display: "inline-block",
@@ -59,7 +60,6 @@ const CategoryTitles = () => {
                 fontWeight: 600,
                 mb: "18px",
               }}
-              onClick={() => dispatch(setIsOpenCatalog(false))}
             >
               {item.title}
             </Link>
@@ -71,4 +71,4 @@ const CategoryTitles = () => {
   );
 };
 
-export default CategoryTitles;
+export default CategoryItems;
