@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { FormControlLabel, Checkbox, Box } from "@mui/material";
-import { brends } from "../../assets/data";
+import ClearButtonAside from "../ClearButtonAside";
 
-const BrendsList = () => {
+const BrendsList = ({brends}) => {
   const [showAllBrends, setShowAllBrends] = useState(false);
 
   const handleClick = () => {
@@ -29,9 +29,9 @@ const BrendsList = () => {
             </div>
           ))}
       </Box>
-      <button onClick={handleClick}>
+      <ClearButtonAside mt={2} onClick={handleClick}>
         {showAllBrends ? "Berkitish" : "Hammasi"}
-      </button>
+      </ClearButtonAside>
     </div>
   );
 };

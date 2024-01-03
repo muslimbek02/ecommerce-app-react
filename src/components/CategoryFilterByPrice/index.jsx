@@ -1,26 +1,12 @@
-import { Box, Typography, TextField, InputAdornment } from "@mui/material";
+import { Box, TextField, InputAdornment } from "@mui/material";
 import CategoryAsideTitle from "../CategoryAsideTitle";
+import ClearButtonAside from "../ClearButtonAside";
 
 const CategoryFilterByPrice = () => {
   return (
     <div>
       <CategoryAsideTitle>Narx, baho</CategoryAsideTitle>
-      <Typography
-        sx={{
-          fontSize: "13px",
-          pb: 0.1,
-          borderBottom: "1px dashed #a0a2a7",
-          display: "inline-block",
-          mb: 2,
-          cursor: "pointer",
-          transition: "0.3s linear border",
-          "&:hover": {
-            borderBottom: "1px solid #a0a2a7",
-          },
-        }}
-      >
-        Tozalash
-      </Typography>
+      <ClearButtonAside>Tozalash</ClearButtonAside>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <TextField
           size="small"

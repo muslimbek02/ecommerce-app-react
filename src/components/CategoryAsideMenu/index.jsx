@@ -18,7 +18,7 @@ const CategoryAsideMenu = () => {
 
   return (
     <Box>
-      <CategoryAsideTitle>Turkumlar</CategoryAsideTitle>
+      <CategoryAsideTitle mt={0}>Turkumlar</CategoryAsideTitle>
       <List sx={{ p: "10px" }}>
         {
           /* parent category links start */

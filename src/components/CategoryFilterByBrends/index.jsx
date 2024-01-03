@@ -1,11 +1,25 @@
-import {useState} from "react";
+import { useState } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+
+import { brendsList } from "../../assets/data";
+
 import CategoryAsideTitle from "../CategoryAsideTitle";
 import BrendsList from "../BrendsList";
 
 const CategoryFilterByBrends = () => {
-  const [brends, setBrends] = useState([]);
+  const [brends, setBrends] = useState(brendsList);
+  const [filteredBrends, setFilteredBrends] = useState(brendsList);
+  const [searchInputVal, setSearchInputVal] = useState("");
+
+  const handleChange = (evt) => {
+    setSearchInputVal(evt.target.value);
+    const searchedBrends = brends.filter((brend) =>
+      brend.toLowerCase().includes(evt.target.value.toLowerCase())
+    );
+    setFilteredBrends(searchedBrends);
+  };
+
   return (
     <div>
       <CategoryAsideTitle>Brend</CategoryAsideTitle>
@@ -14,6 +28,8 @@ const CategoryFilterByBrends = () => {
         id="search-brend-input"
         size="small"
         placeholder="Brend"
+        value={searchInputVal}
+        onChange={handleChange}
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -22,7 +38,7 @@ const CategoryFilterByBrends = () => {
           ),
         }}
       />
-      <BrendsList brends={brends} />
+      <BrendsList brends={filteredBrends} />
     </div>
   );
 };

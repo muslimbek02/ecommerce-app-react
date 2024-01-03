@@ -1,4 +1,3 @@
-//import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@mui/material";
@@ -17,6 +16,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <App />
       </Provider>
     </ThemeProvider>
-  </BrowserRouter>
+  </BrowserRouter> 
   //</React.StrictMode>
 );

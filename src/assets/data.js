@@ -19617,7 +19617,7 @@ export const categoryItem = {
   path: [1, 10020],
 };
 
-export const brends = [
+export const brendsList = [
   "Amazon",
   "eBay",
   "Shopify",
